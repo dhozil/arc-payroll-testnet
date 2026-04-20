@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "vite build",
     "preview": "vite preview",
     "compile": "hardhat compile",
     "deploy:testnet": "hardhat deploy --network arcTestnet",
