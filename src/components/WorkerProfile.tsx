@@ -33,20 +33,37 @@ const WorkerProfile = () => {
 
   useEffect(() => {
     const fetchWorkerData = async () => {
+      console.log('WorkerProfile: Starting fetch, address =', address, 'publicClient =', !!publicClient)
+      
       if (!address || !publicClient) {
+        console.log('WorkerProfile: Missing address or publicClient, using localStorage fallback')
         setIsLoading(false)
+        // Try localStorage fallback
+        const storedData = localStorage.getItem(`worker_${address}`)
+        if (storedData) {
+          setWorkerData(JSON.parse(storedData))
+          setIsWorkerRegistered(true)
+        }
         return
       }
 
       try {
-        // Check if worker is registered
-        const isRegistered = await publicClient.readContract({
-          address: WORKER_REGISTRY_ADDRESS as `0x${string}`,
-          abi: WORKER_REGISTRY_ABI,
-          functionName: 'isWorker',
-          args: [address as `0x${string}`]
-        }) as boolean
+        console.log('WorkerProfile: WORKER_REGISTRY_ADDRESS =', WORKER_REGISTRY_ADDRESS)
+        
+        // Check if worker is registered with timeout
+        const isRegistered = await Promise.race([
+          publicClient.readContract({
+            address: WORKER_REGISTRY_ADDRESS as `0x${string}`,
+            abi: WORKER_REGISTRY_ABI,
+            functionName: 'isWorker',
+            args: [address as `0x${string}`]
+          }) as Promise<boolean>,
+          new Promise<never>((_, reject) => 
+            setTimeout(() => reject(new Error('Contract call timeout')), 5000)
+          )
+        ])
 
+        console.log('WorkerProfile: isRegistered =', isRegistered)
         setIsWorkerRegistered(isRegistered)
 
         if (isRegistered) {
@@ -54,20 +71,25 @@ const WorkerProfile = () => {
           const storedData = localStorage.getItem(`worker_${address}`)
           if (storedData) {
             setWorkerData(JSON.parse(storedData))
+          } else {
+            setWorkerData(null)
           }
         } else {
           // Worker not registered in contract
           setWorkerData(null)
         }
       } catch (error) {
-        console.error('Failed to fetch worker data:', error)
+        console.error('WorkerProfile: Failed to fetch worker data:', error)
         setIsWorkerRegistered(false)
         // Fallback to localStorage
         const storedData = localStorage.getItem(`worker_${address}`)
         if (storedData) {
           setWorkerData(JSON.parse(storedData))
+        } else {
+          setWorkerData(null)
         }
       } finally {
+        console.log('WorkerProfile: Setting isLoading to false')
         setIsLoading(false)
       }
     }
