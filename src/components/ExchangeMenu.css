@@ -1,0 +1,218 @@
+.exchange-menu {
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.exchange-header {
+  margin-bottom: 1.5rem;
+}
+
+.exchange-header h3 {
+  font-size: 1.25rem;
+  color: #e6edf3;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  color: #8b949e;
+  font-size: 0.875rem;
+}
+
+.connect-prompt {
+  text-align: center;
+  padding: 2rem;
+  color: #8b949e;
+}
+
+.exchange-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.balance-display {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: #21262d;
+  border: 1px solid #30363d;
+  border-radius: 6px;
+}
+
+.balance-display .label {
+  color: #8b949e;
+  font-size: 0.875rem;
+}
+
+.balance-display .value {
+  color: #58a6ff;
+  font-weight: 600;
+  font-size: 1.125rem;
+}
+
+.exchange-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  color: #8b949e;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-wrapper input {
+  width: 100%;
+  padding: 0.75rem 3rem 0.75rem 0.75rem;
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 6px;
+  color: #e6edf3;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+
+.input-wrapper input:focus {
+  outline: none;
+  border-color: #58a6ff;
+}
+
+.currency-badge {
+  position: absolute;
+  right: 0.75rem;
+  color: #8b949e;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.exchange-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.75rem;
+}
+
+.exchange-option {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.75rem;
+  background: #21262d;
+  border: 1px solid #30363d;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.exchange-option:hover {
+  background: #30363d;
+}
+
+.exchange-option.active {
+  border-color: #58a6ff;
+  background: rgba(88, 166, 255, 0.1);
+}
+
+.option-icon {
+  font-size: 1.5rem;
+}
+
+.option-text {
+  color: #e6edf3;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.option-rate {
+  color: #8b949e;
+  font-size: 0.75rem;
+}
+
+.exchange-summary {
+  background: #21262d;
+  border: 1px solid #30363d;
+  border-radius: 6px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  color: #8b949e;
+  font-size: 0.875rem;
+}
+
+.summary-row .value {
+  color: #e6edf3;
+  font-weight: 500;
+}
+
+.summary-row.receive-amount {
+  color: #58a6ff;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.summary-row.fee .value {
+  color: #f85149;
+}
+
+.exchange-btn {
+  padding: 0.875rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.btn {
+  padding: 0.5rem 1rem;
+  border: 1px solid #30363d;
+  border-radius: 6px;
+  background: #21262d;
+  color: #e6edf3;
+  cursor: pointer;
+  font-size: 0.875rem;
+  transition: all 0.2s;
+}
+
+.btn:hover:not(:disabled) {
+  background: #30363d;
+}
+
+.btn-primary {
+  background: #238636;
+  border-color: #238636;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: #2ea043;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.exchange-note {
+  color: #d29922;
+  font-size: 0.75rem;
+  font-style: italic;
+  text-align: center;
+}
