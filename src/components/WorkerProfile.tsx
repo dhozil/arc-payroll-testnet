@@ -72,7 +72,18 @@ const WorkerProfile = () => {
           if (storedData) {
             setWorkerData(JSON.parse(storedData))
           } else {
-            setWorkerData(null)
+            // Worker registered but no localStorage data - use placeholder
+            setWorkerData({
+              name: 'Worker',
+              email: '',
+              country: '',
+              currency: 'USD',
+              registeredAt: new Date().toISOString(),
+              status: 'Active',
+              employer: '',
+              salary: 0,
+              totalEarned: 0
+            })
           }
         } else {
           // Worker not registered in contract
