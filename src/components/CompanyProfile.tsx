@@ -333,21 +333,70 @@ const CompanyProfile = () => {
             </div>
             <div className="form-group">
               <label>Country</label>
-              <input
-                type="text"
+              <select
                 value={editForm.country}
                 onChange={(e) => setEditForm({ ...editForm, country: e.target.value })}
                 disabled={isSubmitting}
-              />
+              >
+                <option value="">Select Country</option>
+                <option value="Indonesia">Indonesia</option>
+                <option value="Singapore">Singapore</option>
+                <option value="Malaysia">Malaysia</option>
+                <option value="Thailand">Thailand</option>
+                <option value="Vietnam">Vietnam</option>
+                <option value="Philippines">Philippines</option>
+                <option value="United States">United States</option>
+                <option value="United Kingdom">United Kingdom</option>
+                <option value="Germany">Germany</option>
+                <option value="France">France</option>
+                <option value="Japan">Japan</option>
+                <option value="South Korea">South Korea</option>
+                <option value="China">China</option>
+                <option value="India">India</option>
+                <option value="Australia">Australia</option>
+                <option value="Canada">Canada</option>
+                <option value="Brazil">Brazil</option>
+                <option value="Argentina">Argentina</option>
+                <option value="Mexico">Mexico</option>
+                <option value="South Africa">South Africa</option>
+                <option value="Nigeria">Nigeria</option>
+                <option value="Egypt">Egypt</option>
+                <option value="Turkey">Turkey</option>
+                <option value="Saudi Arabia">Saudi Arabia</option>
+                <option value="UAE">United Arab Emirates</option>
+                <option value="Other">Other</option>
+              </select>
             </div>
             <div className="form-group">
               <label>Industry</label>
-              <input
-                type="text"
+              <select
                 value={editForm.industry}
                 onChange={(e) => setEditForm({ ...editForm, industry: e.target.value })}
                 disabled={isSubmitting}
-              />
+              >
+                <option value="">Select Industry</option>
+                <option value="Technology">Technology</option>
+                <option value="Finance">Finance</option>
+                <option value="Healthcare">Healthcare</option>
+                <option value="Education">Education</option>
+                <option value="Retail">Retail</option>
+                <option value="Manufacturing">Manufacturing</option>
+                <option value="Construction">Construction</option>
+                <option value="Transportation">Transportation</option>
+                <option value="Agriculture">Agriculture</option>
+                <option value="Energy">Energy</option>
+                <option value="Telecommunications">Telecommunications</option>
+                <option value="Media">Media</option>
+                <option value="Entertainment">Entertainment</option>
+                <option value="Hospitality">Hospitality</option>
+                <option value="Real Estate">Real Estate</option>
+                <option value="Consulting">Consulting</option>
+                <option value="Legal">Legal</option>
+                <option value="Logistics">Logistics</option>
+                <option value="E-commerce">E-commerce</option>
+                <option value="Fintech">Fintech</option>
+                <option value="Other">Other</option>
+              </select>
             </div>
           </div>
         )}

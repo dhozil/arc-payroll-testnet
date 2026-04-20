@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useWallet } from '../contexts/WalletContext'
-import { PAYROLL_CONTRACT_ABI, PAYROLL_CONTRACT_ADDRESS } from '../utils/contracts'
+import { PAYROLL_CONTRACT_ABI, PAYROLL_CONTRACT_ADDRESS, WORKER_REGISTRY_ABI, WORKER_REGISTRY_ADDRESS } from '../utils/contracts'
 import KYCSection from './KYCSection'
 import WorkerRegistration from './WorkerRegistration'
 import WorkerProfile from './WorkerProfile'
@@ -30,14 +30,36 @@ function WorkerDashboard() {
 
   // Check if worker is already registered on mount
   useEffect(() => {
-    if (address) {
-      const storedData = localStorage.getItem(`worker_${address}`)
-      setIsWorkerRegistered(!!storedData)
+    const checkWorkerRegistration = async () => {
+      if (!address || !publicClient) return
+
+      try {
+        const isRegistered = await publicClient.readContract({
+          address: WORKER_REGISTRY_ADDRESS as `0x${string}`,
+          abi: WORKER_REGISTRY_ABI,
+          functionName: 'isWorker',
+          args: [address as `0x${string}`]
+        }) as boolean
+
+        setIsWorkerRegistered(isRegistered)
+
+        if (!isRegistered) {
+          // Clear localStorage if not registered on-chain
+          localStorage.removeItem(`worker_${address}`)
+        }
+      } catch (error) {
+        console.error('Failed to check worker registration:', error)
+        // Fallback to localStorage
+        const storedData = localStorage.getItem(`worker_${address}`)
+        setIsWorkerRegistered(!!storedData)
+      }
 
       // Fetch pending payments
       fetchPayments()
     }
-  }, [address])
+
+    checkWorkerRegistration()
+  }, [address, publicClient])
 
   const fetchPayments = async () => {
     if (!address || !publicClient) return
