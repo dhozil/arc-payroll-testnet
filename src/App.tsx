@@ -11,8 +11,23 @@ function LandingPage() {
 
   return (
     <>
+      {/* Faucet Button - Top Left */}
+      <a
+        href="https://faucet.circle.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={(e) => {
+          e.preventDefault()
+          window.open('https://faucet.circle.com/', '_blank')
+        }}
+        style={{ position: 'fixed', top: '1.5rem', left: '1rem', zIndex: 101 }}
+        className="bg-slate-800/80 hover:bg-slate-700/80 text-slate-300 hover:text-white px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 border border-slate-700/50 hover:border-slate-600/50 cursor-pointer"
+      >
+        Faucet
+      </a>
+
       {/* Connect Wallet Button - Top Right */}
-      <button 
+      <button
         onClick={connect}
         style={{ position: 'fixed', top: '1.5rem', right: '1rem', zIndex: 100 }}
         className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 hover:from-blue-500 hover:via-purple-500 hover:to-pink-500 text-white px-6 py-3 rounded-xl font-semibold text-base transition-all duration-300 shadow-xl hover:shadow-[0_0_40px_rgba(99,102,241,0.4)] transform hover:-translate-y-1 hover:scale-105 relative overflow-hidden group"
@@ -117,6 +132,17 @@ function LandingPage() {
           </p>
         </div>
       </div>
+
+      {/* Build by dhozil - Bottom Left */}
+      <a
+        href="https://x.com/cobersky"
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{ position: 'fixed', bottom: '1rem', left: '1rem', zIndex: 100 }}
+        className="text-sm text-slate-400 hover:text-blue-400 transition-colors duration-300 font-medium"
+      >
+        build by dhozil
+      </a>
     </div>
     </>
   )
