@@ -119,7 +119,7 @@ Edit `.env` with your configuration:
 ```env
 # Arc Testnet Configuration
 VITE_ARC_TESTNET_RPC=https://rpc.testnet.arc.network
-VITE_ARC_TESTNET_CHAIN_ID=12345
+VITE_ARC_TESTNET_CHAIN_ID=5042002
 
 # Smart Contract Addresses (after deployment)
 VITE_COMPANY_REGISTRY_ADDRESS=0x...
